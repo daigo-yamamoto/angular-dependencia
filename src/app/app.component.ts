@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { MeuServicoService } from './meu-servico.service';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [CommonModule, RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'meu-projeto-di';
+  titulo = 'Lista de Itens';
+  itens: string[];
+
+  constructor(private meuServico: MeuServicoService) {
+    this.itens = meuServico.obterItens();
+  }
 }
